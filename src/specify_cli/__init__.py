@@ -51,7 +51,8 @@ import readchar
 AI_CHOICES = {
     "copilot": "GitHub Copilot",
     "claude": "Claude Code",
-    "gemini": "Gemini CLI"
+    "gemini": "Gemini CLI",
+    "auggie": "Augment AUGGIE CLI"
 }
 
 # ASCII Art Banner
@@ -737,6 +738,10 @@ def init(
             if not check_tool("gemini", "Install from: https://github.com/google-gemini/gemini-cli"):
                 console.print("[red]Error:[/red] Gemini CLI is required for Gemini projects")
                 agent_tool_missing = True
+        elif selected_ai == "auggie":
+            if not check_tool("auggie", "Install with: npm install -g @augmentcode/auggie"):
+                console.print("[red]Error:[/red] AUGGIE CLI is required for Augment projects")
+                agent_tool_missing = True
         # GitHub Copilot check is not needed as it's typically available in supported IDEs
         
         if agent_tool_missing:
@@ -824,6 +829,12 @@ def init(
         steps_lines.append("   - See GEMINI.md for all available commands")
     elif selected_ai == "copilot":
         steps_lines.append(f"{step_num}. Open in Visual Studio Code and use [bold cyan]/specify[/], [bold cyan]/plan[/], [bold cyan]/tasks[/] commands with GitHub Copilot")
+    elif selected_ai == "auggie":
+        steps_lines.append(f"{step_num}. Use AUGGIE CLI commands for spec-driven development")
+        steps_lines.append("   - Run auggie-specify to create specifications")
+        steps_lines.append("   - Run auggie-plan to create implementation plans")
+        steps_lines.append("   - Run auggie-tasks to generate tasks")
+        steps_lines.append("   - See AUGGIE.md for all available commands")
 
     step_num += 1
     steps_lines.append(f"{step_num}. Update [bold magenta]CONSTITUTION.md[/bold magenta] with your project's non-negotiable principles")
@@ -856,11 +867,12 @@ def check():
     console.print("\n[cyan]Optional AI tools:[/cyan]")
     claude_ok = check_tool("claude", "Install from: https://docs.anthropic.com/en/docs/claude-code/setup")
     gemini_ok = check_tool("gemini", "Install from: https://github.com/google-gemini/gemini-cli")
+    auggie_ok = check_tool("auggie", "Install with: npm install -g @augmentcode/auggie")
     
     console.print("\n[green]✓ Specify CLI is ready to use![/green]")
     if not git_ok:
         console.print("[yellow]Consider installing git for repository management[/yellow]")
-    if not (claude_ok or gemini_ok):
+    if not (claude_ok or gemini_ok or auggie_ok):
         console.print("[yellow]Consider installing an AI assistant for the best experience[/yellow]")
 
 
