@@ -38,3 +38,8 @@ env/
 .env
 .env.local
 *.lock
+
+# AUGGIE Integration - Example Projects
+rp-strength-tracker/
+frontend/
+ExerciseTracker.html
