@@ -1,0 +1,33 @@
+[ ] NAME:Current Task List DESCRIPTION:Root task for conversation __NEW_AGENT__
+-[/] NAME:Phase 3.1: Setup DESCRIPTION:Complete all tasks in Phase 3.1: Setup - Create project structure, initialize Node.js/React projects, configure tooling, Docker, database, and testing frameworks
+--[/] NAME:T001: Create project structure DESCRIPTION:Create project structure with backend/, frontend/, shared/ directories following the specifications in specs/ directory
+--[ ] NAME:T002: Initialize backend Node.js project DESCRIPTION:Initialize backend Node.js project with TypeScript and Express dependencies
+--[ ] NAME:T003: Initialize frontend React project DESCRIPTION:Initialize frontend React project with TypeScript and Tailwind CSS
+--[ ] NAME:T004: Initialize shared types library DESCRIPTION:Initialize shared types library with TypeScript for common interfaces
+--[ ] NAME:T005: Configure ESLint and Prettier DESCRIPTION:Configure ESLint and Prettier for all projects with consistent code style
+--[ ] NAME:T006: Setup Docker configuration DESCRIPTION:Setup Docker configuration with docker-compose.yml for PostgreSQL, Redis, and application containers
+--[ ] NAME:T007: Configure PostgreSQL database DESCRIPTION:Configure PostgreSQL database with Docker and initial schema setup
+--[ ] NAME:T008: Setup Prisma ORM DESCRIPTION:Setup Prisma ORM with initial schema for User, Exercise, Workout, TrainingSession models
+--[ ] NAME:T009: Configure Jest testing (backend) DESCRIPTION:Configure Jest testing framework for backend with TypeScript support
+--[ ] NAME:T010: Configure React Testing Library DESCRIPTION:Configure React Testing Library and Jest for frontend component testing
+-[ ] NAME:Phase 3.2: Tests First (TDD) DESCRIPTION:Complete all tasks in Phase 3.2: Tests First (TDD) - Write contract tests and integration tests BEFORE implementation (must complete before Phase 3.3)
+--[ ] NAME:T014: Contract test GET /api/exercises DESCRIPTION:Contract test GET /api/exercises in backend/tests/contract/test_exercises_get.test.ts
+--[ ] NAME:T015: Contract test POST /api/workouts DESCRIPTION:Contract test POST /api/workouts in backend/tests/contract/test_workouts_post.test.ts
+--[ ] NAME:T016: Contract test GET /api/workouts DESCRIPTION:Contract test GET /api/workouts in backend/tests/contract/test_workouts_get.test.ts
+--[ ] NAME:T017: Contract test POST /api/training-sessions DESCRIPTION:Contract test POST /api/training-sessions in backend/tests/contract/test_sessions_post.test.ts
+--[ ] NAME:T018: Contract test GET /api/training-sessions DESCRIPTION:Contract test GET /api/training-sessions in backend/tests/contract/test_sessions_get.test.ts
+--[ ] NAME:T021: Integration test training session logging DESCRIPTION:Integration test training session logging in backend/tests/integration/test_session_logging.test.ts
+--[ ] NAME:T022: Integration test volume calculation DESCRIPTION:Integration test volume calculation in backend/tests/integration/test_volume_calculation.test.ts
+-[ ] NAME:Phase 3.3: Core Implementation DESCRIPTION:Complete all tasks in Phase 3.3: Core Implementation - Implement models, services, libraries, and API endpoints (ONLY after tests are failing)
+--[ ] NAME:T025: Workout model DESCRIPTION:Workout model in shared/src/types/Workout.ts with exercise selection and periodization
+--[ ] NAME:T026: TrainingSession model DESCRIPTION:TrainingSession model in shared/src/types/TrainingSession.ts with performance tracking
+--[ ] NAME:T027: Mesocycle model DESCRIPTION:Mesocycle model in shared/src/types/Mesocycle.ts for periodization phases
+--[ ] NAME:T028: VolumeLandmark model DESCRIPTION:VolumeLandmark model in shared/src/types/VolumeLandmark.ts for MEV/MAV/MRV tracking
+--[ ] NAME:T030: ExerciseService CRUD DESCRIPTION:ExerciseService CRUD in backend/src/services/ExerciseService.ts
+--[ ] NAME:T031: WorkoutService CRUD DESCRIPTION:WorkoutService CRUD in backend/src/services/WorkoutService.ts
+--[ ] NAME:T032: TrainingSessionService CRUD DESCRIPTION:TrainingSessionService CRUD in backend/src/services/TrainingSessionService.ts
+--[ ] NAME:T034: AnalyticsEngine library DESCRIPTION:AnalyticsEngine library in backend/src/lib/AnalyticsEngine.ts for volume and progress analysis
+--[ ] NAME:T035: VideoIntegration library DESCRIPTION:VideoIntegration library in backend/src/lib/VideoIntegration.ts for YouTube API
+-[ ] NAME:Phase 3.4: Integration DESCRIPTION:Complete all tasks in Phase 3.4: Integration - Connect services to database, add authentication, WebSocket, YouTube API, Redis
+-[ ] NAME:Phase 3.5: Frontend Core DESCRIPTION:Complete all tasks in Phase 3.5: Frontend Core - Build React components, pages, API service layer, state management
+-[ ] NAME:Phase 3.6: Polish DESCRIPTION:Complete all tasks in Phase 3.6: Polish - Add comprehensive tests, performance optimization, documentation, refactoring
