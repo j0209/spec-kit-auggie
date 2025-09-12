@@ -52,12 +52,9 @@ import truststore
 ssl_context = truststore.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
 client = httpx.Client(verify=ssl_context)
 
-# Constants
+# Constants - AUGGIE-Only Enhanced Spec-Kit
 AI_CHOICES = {
-    "copilot": "GitHub Copilot",
-    "claude": "Claude Code",
-    "gemini": "Gemini CLI",
-    "auggie": "Augment AUGGIE CLI"
+    "auggie": "Augment AUGGIE CLI - Enhanced Spec-Driven Development"
 }
 
 # Claude CLI local installation path after migrate-installer
@@ -652,7 +649,7 @@ def download_and_extract_template(project_path: Path, ai_assistant: str, is_curr
 @app.command()
 def init(
     project_name: str = typer.Argument(None, help="Name for your new project directory (optional if using --here)"),
-    ai_assistant: str = typer.Option(None, "--ai", help="AI assistant to use: claude, gemini, or copilot"),
+    ai_assistant: str = typer.Option("auggie", "--ai", help="AI assistant (AUGGIE-only enhanced version)"),
     ignore_agent_tools: bool = typer.Option(False, "--ignore-agent-tools", help="Skip checks for AI agent tools like Claude Code"),
     no_git: bool = typer.Option(False, "--no-git", help="Skip git repository initialization"),
     here: bool = typer.Option(False, "--here", help="Initialize project in the current directory instead of creating a new one"),
@@ -662,12 +659,12 @@ def init(
     Initialize a new Specify project from the latest template.
     
     This command will:
-    1. Check that required tools are installed (git is optional)
-    2. Let you choose your AI assistant (Claude Code, Gemini CLI, or GitHub Copilot)
-    3. Download the appropriate template from GitHub
-    4. Extract the template to a new project directory or current directory
-    5. Initialize a fresh git repository (if not --no-git and no existing repo)
-    6. Optionally set up AI assistant commands
+    1. Check that AUGGIE CLI is installed and ready
+    2. Download the enhanced AUGGIE template from GitHub
+    3. Extract the template to a new project directory or current directory
+    4. Initialize a fresh git repository (if not --no-git and no existing repo)
+    5. Set up enhanced AUGGIE commands for complete project development
+    6. Configure design, UX, and pragmatic development specifications
     
     Examples:
         specify init my-project
@@ -741,27 +738,14 @@ def init(
             "copilot"
         )
     
-    # Check agent tools unless ignored
+    # Check AUGGIE CLI unless ignored
     if not ignore_agent_tools:
-        agent_tool_missing = False
-        if selected_ai == "claude":
-            if not check_tool("claude", "Install from: https://docs.anthropic.com/en/docs/claude-code/setup"):
-                console.print("[red]Error:[/red] Claude CLI is required for Claude Code projects")
-                agent_tool_missing = True
-        elif selected_ai == "gemini":
-            if not check_tool("gemini", "Install from: https://github.com/google-gemini/gemini-cli"):
-                console.print("[red]Error:[/red] Gemini CLI is required for Gemini projects")
-                agent_tool_missing = True
-        elif selected_ai == "auggie":
-            if not check_tool("auggie", "Install with: npm install -g @augmentcode/auggie"):
-                console.print("[red]Error:[/red] AUGGIE CLI is required for Augment projects")
-                agent_tool_missing = True
-        # GitHub Copilot check is not needed as it's typically available in supported IDEs
-        
-        if agent_tool_missing:
-            console.print("\n[red]Required AI tool is missing![/red]")
+        if not check_tool("auggie", "Install with: npm install -g @augmentcode/auggie"):
+            console.print("[red]Error:[/red] AUGGIE CLI is required for enhanced Spec-Kit")
+            console.print("[yellow]Install with:[/yellow] npm install -g @augmentcode/auggie")
             console.print("[yellow]Tip:[/yellow] Use --ignore-agent-tools to skip this check")
             raise typer.Exit(1)
+        console.print("[green]✓[/green] AUGGIE CLI detected and ready")
     
     # Download and set up project
     # New tree-based progress (no emojis); include earlier substeps
@@ -834,26 +818,14 @@ def init(
         steps_lines.append("1. You're already in the project directory!")
         step_num = 2
 
-    if selected_ai == "claude":
-        steps_lines.append(f"{step_num}. Open in Visual Studio Code and start using / commands with Claude Code")
-        steps_lines.append("   - Type / in any file to see available commands")
-        steps_lines.append("   - Use /specify to create specifications")
-        steps_lines.append("   - Use /plan to create implementation plans")
-        steps_lines.append("   - Use /tasks to generate tasks")
-    elif selected_ai == "gemini":
-        steps_lines.append(f"{step_num}. Use / commands with Gemini CLI")
-        steps_lines.append("   - Run gemini /specify to create specifications")
-        steps_lines.append("   - Run gemini /plan to create implementation plans")
-        steps_lines.append("   - Run gemini /tasks to generate tasks")
-        steps_lines.append("   - See GEMINI.md for all available commands")
-    elif selected_ai == "copilot":
-        steps_lines.append(f"{step_num}. Open in Visual Studio Code and use [bold cyan]/specify[/], [bold cyan]/plan[/], [bold cyan]/tasks[/] commands with GitHub Copilot")
-    elif selected_ai == "auggie":
-        steps_lines.append(f"{step_num}. Use AUGGIE CLI commands for spec-driven development")
-        steps_lines.append("   - Run auggie-specify to create specifications")
-        steps_lines.append("   - Run auggie-plan to create implementation plans")
-        steps_lines.append("   - Run auggie-tasks to generate tasks")
-        steps_lines.append("   - See AUGGIE.md for all available commands")
+    # Enhanced AUGGIE-only workflow
+    steps_lines.append(f"{step_num}. Load enhanced AUGGIE commands and start developing")
+    steps_lines.append("   - Run: source templates/auggie-commands.sh")
+    steps_lines.append("   - Use auggie-specify for complete specifications")
+    steps_lines.append("   - Use auggie-design-spec for UI/UX specifications")
+    steps_lines.append("   - Use auggie-plan for pragmatic implementation plans")
+    steps_lines.append("   - Use auggie-tasks for detailed task breakdowns")
+    steps_lines.append("   - See README.md for complete enhanced workflow")
 
     step_num += 1
     steps_lines.append(f"{step_num}. Update [bold magenta]CONSTITUTION.md[/bold magenta] with your project's non-negotiable principles")
@@ -887,16 +859,15 @@ def check(skip_tls: bool = typer.Option(False, "--skip-tls", help="Skip SSL/TLS 
     console.print("\n[cyan]Optional tools:[/cyan]")
     git_ok = check_tool("git", "https://git-scm.com/downloads")
     
-    console.print("\n[cyan]Optional AI tools:[/cyan]")
-    claude_ok = check_tool("claude", "Install from: https://docs.anthropic.com/en/docs/claude-code/setup")
-    gemini_ok = check_tool("gemini", "Install from: https://github.com/google-gemini/gemini-cli")
+    console.print("\n[cyan]Required AI tool:[/cyan]")
     auggie_ok = check_tool("auggie", "Install with: npm install -g @augmentcode/auggie")
     
-    console.print("\n[green]✓ Specify CLI is ready to use![/green]")
+    console.print("\n[green]✓ Enhanced Spec-Kit is ready to use![/green]")
     if not git_ok:
         console.print("[yellow]Consider installing git for repository management[/yellow]")
-    if not (claude_ok or gemini_ok or auggie_ok):
-        console.print("[yellow]Consider installing an AI assistant for the best experience[/yellow]")
+    if not auggie_ok:
+        console.print("[yellow]AUGGIE CLI is required for enhanced Spec-Kit functionality[/yellow]")
+        console.print("[yellow]Install with: npm install -g @augmentcode/auggie[/yellow]")
 
 
 def main():
