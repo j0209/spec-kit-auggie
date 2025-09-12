@@ -94,6 +94,7 @@ elif selected_ai == "auggie":
 - Always include AUGGIE in help text
 - Always mention 4 AI assistants (not 3)
 - Always include AUGGIE examples
+- Keep README.md as our AUGGIE-enhanced version (original preserved as README-ORIGINAL.md)
 
 ## 🔍 **Monitoring Strategy**
 
