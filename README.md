@@ -4,7 +4,7 @@
 
 This is a revolutionary enhancement of GitHub's Spec-Kit that transforms it into a complete project development orchestrator. Unlike traditional spec tools that leave design and implementation details to interpretation, this version generates comprehensive specifications for every aspect of your project.
 
-> 📋 **Original Documentation**: See [README-ORIGINAL.md](README-ORIGINAL.md) for the complete original Spec-Kit documentation and philosophy.
+> 📋 **Original Project**: Based on GitHub's [Spec-Kit](https://github.com/github/spec-kit) - enhanced with AUGGIE integration and multi-agent orchestration capabilities.
 
 ## ✨ What Makes This Revolutionary
 
