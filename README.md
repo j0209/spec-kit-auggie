@@ -49,29 +49,43 @@ python -c "from src.specify_cli import main; main()" init my-project --ai auggie
 cd spec-kit-auggie
 source templates/auggie-commands.sh
 
-# 1. Create a new project (prevents confusion with Spec-Kit itself)
-auggie-new-project "task-manager" "A collaborative task management app" --tech-stack=react
+# 1. Create a new project with AUGGIE workspace
+auggie-new-project "task-manager" "A collaborative task management app" --tech-stack=react --complexity=enterprise
 
-# 2. Define project scope (prevents over-engineering)
-auggie-scope-spec "task-manager" "User management system" --complexity=simple
+# 2. 🚨 CRITICAL: Add comprehensive planning documents to context folder
+# This is what makes specifications professional vs generic!
+cd projects/task-manager/.augment/context/
+# Add your planning documents:
+# - PRD (Product Requirements Document)
+# - Market research and competitive analysis
+# - User personas and journey maps
+# - Technical constraints and architecture requirements
+# - Business requirements and success metrics
 
-# 3. Create design specifications
-auggie-design-spec "task-manager" "Clean, modern SaaS interface"
+# 3. Request intelligent specification planning (orchestrator analyzes context)
+auggie-orchestrate-specs "task-manager" "Analyze context and create specification task list"
 
-# 4. Define user experience flows
-auggie-ux-spec "task-manager" "Intuitive user onboarding and dashboard"
+# 4. Execute parallel specification generation using shared task list
+# Multiple AUGGIE agents work in parallel, each referencing the same context materials:
 
-# 5. Create technical specifications
-auggie-specify "task-manager" "User authentication with JWT tokens"
+# → AUGGIE 1 (Scope): auggie-scope-spec "task-manager" "User management system" --complexity=enterprise
+# → AUGGIE 2 (Design): auggie-design-spec "task-manager" "Modern SaaS interface with accessibility"
+# → AUGGIE 3 (UX): auggie-ux-spec "task-manager" "Intuitive user onboarding and dashboard flows"
+# → AUGGIE 4 (Security): auggie-security-spec "task-manager" "Enterprise authentication and authorization"
+# → AUGGIE 5 (Database): auggie-database-spec "task-manager" "Scalable data architecture"
 
-# 6. Generate implementation plans
-auggie-plan "task-manager" "Use Express.js with PostgreSQL and bcrypt"
+# 5. Generate technical specifications and implementation plans
+auggie-specify "task-manager" "Core platform functionality with real-time collaboration"
+auggie-plan "task-manager" "Microservices architecture with React frontend"
 
-# 7. Create detailed task breakdowns
+# 6. Create detailed task breakdowns in native AUGGIE format
 auggie-tasks "task-manager"
 
+# 7. Export complete development workspace with orchestrator tools
+auggie-export-specs "task-manager" "/path/to/development/handoff/"
+
 # 8. Execute with multiple AUGGIE agents (parallel development)
-# Each agent gets complete specifications - no interpretation needed!
+# Each agent gets complete specifications + context materials - no interpretation needed!
 ```
 
 ## 🏗️ **Multi-Project Architecture**
