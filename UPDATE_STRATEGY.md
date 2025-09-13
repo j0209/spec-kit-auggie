@@ -57,7 +57,8 @@ When merging/cherry-picking, conflicts may occur in:
 - ✅ AUGGIE tool checking and installation
 - ✅ AUGGIE command templates (`templates/commands/auggie/`)
 - ✅ Shell integration (`templates/auggie-commands.sh`)
-- ✅ Task management bridge (`spec-kit-augment-bridge.py`)
+- ✅ Enhanced export with multi-agent orchestration
+- ✅ Native AUGGIE task format generation
 - ✅ Professional documentation (`docs/`)
 
 ### **What We Adopt from Upstream:**

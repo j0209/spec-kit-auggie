@@ -9,15 +9,18 @@ This command generates complete component specifications that ensure design syst
 
 Given the component description provided as an argument, do this:
 
-1. **Create Component Design File**:
-   - Create a component-design.md file in the current feature directory (specs/XXX-feature-name/)
+1. **Create Component Design File** (with project awareness):
+   - If a project name is provided in the arguments, create component-design.md in the project-specific feature directory (projects/PROJECT_NAME/specs/XXX-feature-name/)
+   - If no project name provided, use legacy structure: specs/XXX-feature-name/component-design.md
    - If no feature directory exists, create one using the component description as the feature name
 
-2. **Analyze Existing Component Context**:
-   - Use your context engine to examine existing components and design patterns
-   - Identify current component library structure and naming conventions
+2. **Analyze Existing Component Context** (with project awareness):
+   - If PROJECT_NAME is provided: Focus analysis on the specific project directory (PROJECT_DIR)
+   - Use your context engine to examine existing components and design patterns within the project
+   - Identify current component library structure and naming conventions specific to the project
    - Understand the project's design system tokens and styling approach
-   - Review similar components for consistency and reusability opportunities
+   - Review similar components within the project for consistency and reusability opportunities
+   - **IMPORTANT**: Avoid conflating with other projects or the Spec-Kit framework's component patterns
 
 2. **Define Component Structure**:
    - **Component Name**: Clear, descriptive name following project conventions

@@ -39,7 +39,11 @@ env/
 .env.local
 *.lock
 
-# AUGGIE Integration - Example Projects
+# AUGGIE Integration - Generated Projects (examples/tests)
 rp-strength-tracker/
-frontend/
-ExerciseTracker.html
+*-tracker/
+example-*/
+
+# Projects folder - keep structure but ignore project contents
+projects/*/
+!projects/.gitkeep

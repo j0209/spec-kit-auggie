@@ -9,16 +9,21 @@ This command generates realistic project scopes that ensure maintainable, approp
 
 Given the feature description and complexity level provided as arguments, do this:
 
-1. **Create Feature Directory Structure**:
-   - Run the script `scripts/create-new-feature.sh --json "{ARGS}"` from repo root and parse its JSON output for BRANCH_NAME and SPEC_FILE
+1. **Create Feature Directory Structure** (with project awareness):
+   - If a project name is provided in the arguments, use project-specific structure
+   - Run the script `scripts/create-new-feature.sh --json --project=PROJECT_NAME "{FEATURE_DESCRIPTION}"` from repo root
+   - If no project name provided, use legacy structure: `scripts/create-new-feature.sh --json "{ARGS}"`
+   - Parse JSON output for BRANCH_NAME, SPEC_FILE, and optionally PROJECT_NAME, PROJECT_DIR
    - All file paths must be absolute
-   - This creates the proper specs/XXX-feature-name directory structure
+   - This creates the proper project-specific or legacy directory structure
 
-2. **Analyze Project Context**:
-   - Use your context engine to understand the existing codebase architecture
-   - Identify current technology stack and established patterns
-   - Assess team size, experience level, and available resources
-   - Review similar features already implemented for complexity reference
+2. **Analyze Project Context** (with project awareness):
+   - If PROJECT_NAME is provided: Focus analysis on the specific project directory (PROJECT_DIR)
+   - Use your context engine to understand the existing codebase architecture within the project
+   - Identify current technology stack and established patterns specific to the project
+   - Assess team size, experience level, and available resources for the project
+   - Review similar features already implemented within the same project for complexity reference
+   - **IMPORTANT**: Avoid conflating with other projects or the Spec-Kit framework itself
 
 2. **Define Core Requirements (MVP)**:
    - **Essential User Needs**: The minimum functionality that solves the core problem

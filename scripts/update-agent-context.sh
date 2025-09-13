@@ -2,12 +2,51 @@
 # Incrementally update agent context files based on new feature plan
 # Supports: CLAUDE.md, GEMINI.md, and .github/copilot-instructions.md
 # O(1) operation - only reads current context file and new plan.md
+# Usage: ./update-agent-context.sh [agent_type] [--project=project-name]
 
 set -e
 
+PROJECT_NAME=""
+AGENT_TYPE=""
+
+# Parse arguments
+ARGS=()
+for arg in "$@"; do
+    case "$arg" in
+        --project=*) PROJECT_NAME="${arg#*=}" ;;
+        --help|-h)
+            echo "Usage: $0 [agent_type] [--project=project-name]"
+            echo "  agent_type          Specific agent to update (claude, gemini, copilot)"
+            echo "  --project=name      Use project-specific structure"
+            echo "  --help              Show this help"
+            exit 0 ;;
+        *)
+            ARGS+=("$arg") ;;
+    esac
+done
+
+# First non-flag argument is agent type
+if [[ ${#ARGS[@]} -gt 0 ]]; then
+    AGENT_TYPE="${ARGS[0]}"
+fi
+
 REPO_ROOT=$(git rev-parse --show-toplevel)
 CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
-FEATURE_DIR="$REPO_ROOT/specs/$CURRENT_BRANCH"
+
+# Determine feature directory based on project parameter
+if [[ -n "$PROJECT_NAME" ]]; then
+    # Project-specific structure
+    PROJECT_DIR="$REPO_ROOT/projects/$PROJECT_NAME"
+    if [[ ! -d "$PROJECT_DIR" ]]; then
+        echo "Error: Project '$PROJECT_NAME' does not exist at $PROJECT_DIR" >&2
+        exit 1
+    fi
+    FEATURE_DIR="$PROJECT_DIR/specs/$CURRENT_BRANCH"
+else
+    # Legacy structure
+    FEATURE_DIR="$REPO_ROOT/specs/$CURRENT_BRANCH"
+fi
+
 NEW_PLAN="$FEATURE_DIR/plan.md"
 
 # Determine which agent context files to update
@@ -15,8 +54,7 @@ CLAUDE_FILE="$REPO_ROOT/CLAUDE.md"
 GEMINI_FILE="$REPO_ROOT/GEMINI.md"
 COPILOT_FILE="$REPO_ROOT/.github/copilot-instructions.md"
 
-# Allow override via argument
-AGENT_TYPE="$1"
+# Agent type is now set from argument parsing above
 
 if [ ! -f "$NEW_PLAN" ]; then
     echo "ERROR: No plan.md found at $NEW_PLAN"

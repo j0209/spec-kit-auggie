@@ -9,14 +9,21 @@ This is the third step in the Spec-Driven Development lifecycle.
 
 Given the context provided as an argument, do this:
 
-1. Run `scripts/check-task-prerequisites.sh --json` from repo root and parse FEATURE_DIR and AVAILABLE_DOCS list. All paths must be absolute.
+1. **Determine Project Context and Check Prerequisites**:
+   - If a project name is provided in the arguments, use project-specific structure
+   - Run `scripts/check-task-prerequisites.sh --json --project=PROJECT_NAME` from repo root
+   - If no project name provided, use legacy structure: `scripts/check-task-prerequisites.sh --json`
+   - Parse FEATURE_DIR, AVAILABLE_DOCS list, and optionally PROJECT_NAME, PROJECT_DIR
+   - All paths must be absolute.
 
-2. Use your context engine to analyze:
-   - Available design documents and their implications
-   - Existing codebase patterns for similar implementations
-   - Current testing strategies and frameworks
-   - Development workflow and tooling
-   - Team capabilities and constraints
+2. **Use your context engine to analyze** (with project awareness):
+   - If PROJECT_NAME is provided: Focus analysis on the specific project directory (PROJECT_DIR)
+   - Available design documents and their implications within the project context
+   - Existing codebase patterns for similar implementations within the project
+   - Current testing strategies and frameworks specific to the project
+   - Development workflow and tooling used by the project
+   - Team capabilities and constraints for the project
+   - **IMPORTANT**: Avoid conflating with other projects or the Spec-Kit framework itself
 
 3. Load and analyze available design documents:
    - Always read plan.md for tech stack and libraries

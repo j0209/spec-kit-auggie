@@ -9,15 +9,18 @@ This command generates complete design systems that ensure professional quality 
 
 Given the design description provided as an argument, do this:
 
-1. **Create Design Specification File**:
-   - Create a design-spec.md file in the current feature directory (specs/XXX-feature-name/)
+1. **Determine Project Context and Create Design Specification File**:
+   - If a project name is provided in the arguments, create design-spec.md in the project-specific feature directory (projects/PROJECT_NAME/specs/XXX-feature-name/)
+   - If no project name provided, use legacy structure: specs/XXX-feature-name/design-spec.md
    - If no feature directory exists, create one using the design description as the feature name
 
-2. **Analyze Existing Design Context**:
-   - Use your context engine to examine existing CSS, design tokens, and UI components
-   - Identify current color schemes, typography, and spacing patterns
+2. **Analyze Existing Design Context** (with project awareness):
+   - If PROJECT_NAME is provided: Focus analysis on the specific project directory (PROJECT_DIR)
+   - Use your context engine to examine existing CSS, design tokens, and UI components within the project
+   - Identify current color schemes, typography, and spacing patterns specific to the project
    - Understand the project's visual identity and brand requirements
-   - Review any existing design system or style guide
+   - Review any existing design system or style guide within the project
+   - **IMPORTANT**: Avoid conflating with other projects or the Spec-Kit framework's design patterns
 
 2. **Generate Design System Specification**:
    - **Color Palette**: Primary, secondary, accent colors with hex codes and usage guidelines

@@ -1,0 +1,3 @@
+# Keep the projects directory structure
+# Individual project contents are ignored via .gitignore
+# This allows the projects folder to be used for development while keeping the repo clean

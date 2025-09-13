@@ -99,10 +99,8 @@ project-name/
 
 ### Integration Scripts
 ```
-├── spec-kit-to-augment-md.py      # Direct markdown converter
-├── spec-kit-augment-bridge.py     # Legacy bridge script  
-├── auggie-task-integration.sh     # Task import automation
-└── multi-auggie.sh                # Multi-agent orchestration
+├── multi-auggie-orchestrator.py   # Python multi-agent orchestrator
+└── multi-auggie.sh                # Multi-agent orchestration shell script
 ```
 
 ## 🔄 Task Management Integration

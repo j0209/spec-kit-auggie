@@ -11,13 +11,24 @@ The Multi-AUGGIE Force Multiplier enables **parallel AI development** by orchest
 - **Intelligent Task Assignment**: Tasks assigned based on agent specialization
 - **Conflict Prevention**: File-level coordination prevents merge conflicts
 - **Context Awareness**: Each agent understands the full project architecture
+- **Project Isolation**: Multi-project structure prevents confusion between different projects
+- **Knowledge Reuse**: Patterns learned from one project inform development of others
 
-## 🏗️ Architecture
+## 🏗️ Multi-Project Architecture
 
 ```
-Spec-Kit Generated Specifications
+Enhanced Spec-Kit with Multi-Project Support
          ↓
-Multi-AUGGIE Orchestrator
+┌─────────────────────────────────────────────────────────┐
+│                 Spec-Kit Framework                      │
+│  ┌─────────────┬─────────────┬─────────────────────────┐│
+│  │ Project A   │ Project B   │ Project C               ││
+│  │ task-mgr    │ e-commerce  │ blog-platform           ││
+│  │ specs/      │ specs/      │ specs/                  ││
+│  └─────────────┴─────────────┴─────────────────────────┘│
+└─────────────────────────────────────────────────────────┘
+         ↓
+Multi-AUGGIE Orchestrator (Project-Aware)
          ↓
 ┌─────────────┬─────────────┬─────────────┬─────────────┐
 │   Frontend  │   Backend   │  Database   │   Testing   │
@@ -25,9 +36,10 @@ Multi-AUGGIE Orchestrator
 │             │             │             │             │
 │ React/Vue   │ Node/Python │ SQL/NoSQL   │ Jest/Cypress│
 │ Components  │ APIs        │ Migrations  │ Test Suites │
+│ (Project A) │ (Project A) │ (Project A) │ (Project A) │
 └─────────────┴─────────────┴─────────────┴─────────────┘
          ↓
-Coordinated Integration & Merge
+Coordinated Integration & Merge (Project-Specific)
 ```
 
 ## 🛠️ Setup
@@ -60,32 +72,41 @@ chmod +x multi-auggie.sh
 
 ## 📋 Workflow
 
-### 1. Generate Specifications (Standard Spec-Kit)
+### 1. Generate Specifications (Enhanced Multi-Project Spec-Kit)
 
 ```bash
-# Generate comprehensive specifications
-auggie-specify "Build a task management app with user authentication, real-time updates, and team collaboration"
+# First, create a project to avoid confusion with Spec-Kit framework
+auggie-new-project "task-manager" "A collaborative task management app with real-time updates" --tech-stack=react
 
-auggie-plan "Use React frontend with Node.js/Express backend, PostgreSQL database, Socket.io for real-time features, and JWT authentication"
+# Generate comprehensive specifications with project context
+auggie-specify "task-manager" "Build a task management app with user authentication, real-time updates, and team collaboration"
 
-auggie-tasks
+auggie-plan "task-manager" "Use React frontend with Node.js/Express backend, PostgreSQL database, Socket.io for real-time features, and JWT authentication"
+
+auggie-tasks "task-manager"
 ```
 
-This creates detailed specifications in `specs/001-task-management/`:
+This creates detailed specifications in `projects/task-manager/specs/001-task-management/`:
 - `spec.md` - Feature requirements and acceptance criteria
-- `plan.md` - Technical architecture and implementation approach  
+- `plan.md` - Technical architecture and implementation approach
 - `tasks.md` - Detailed, executable tasks with dependencies
+
+**Key Benefits of Project Context:**
+- AUGGIE focuses on your specific project, not the Spec-Kit framework
+- Specifications reference actual project architecture and patterns
+- No confusion between different projects or sample implementations
 
 ### 2. Initialize Multi-Agent Workspace
 
 ```bash
-./multi-auggie.sh init specs/001-task-management
+./multi-auggie.sh init projects/task-manager/specs/001-task-management
 ```
 
 This creates:
 - Individual workspaces for each agent
-- Shared specifications and context
-- Task parsing and assignment system
+- Shared specifications and context from the specific project
+- Task parsing and assignment system with project awareness
+- Isolated development environment for the task-manager project
 
 ### 3. Orchestrate Parallel Development
 

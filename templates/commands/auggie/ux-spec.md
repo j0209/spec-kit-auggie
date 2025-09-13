@@ -9,15 +9,18 @@ This command generates complete UX specifications that ensure excellent usabilit
 
 Given the UX flow description provided as an argument, do this:
 
-1. **Create UX Specification File**:
-   - Create a ux-spec.md file in the current feature directory (specs/XXX-feature-name/)
+1. **Create UX Specification File** (with project awareness):
+   - If a project name is provided in the arguments, create ux-spec.md in the project-specific feature directory (projects/PROJECT_NAME/specs/XXX-feature-name/)
+   - If no project name provided, use legacy structure: specs/XXX-feature-name/ux-spec.md
    - If no feature directory exists, create one using the UX description as the feature name
 
-2. **Analyze Existing UX Context**:
-   - Use your context engine to examine existing user flows and interaction patterns
-   - Identify current navigation structures and user journey patterns
-   - Understand the application's user types and use cases
-   - Review existing forms, modals, and interactive elements
+2. **Analyze Existing UX Context** (with project awareness):
+   - If PROJECT_NAME is provided: Focus analysis on the specific project directory (PROJECT_DIR)
+   - Use your context engine to examine existing user flows and interaction patterns within the project
+   - Identify current navigation structures and user journey patterns specific to the project
+   - Understand the project's user types and use cases
+   - Review existing forms, modals, and interactive elements within the project
+   - **IMPORTANT**: Avoid conflating with other projects or the Spec-Kit framework's UX patterns
 
 2. **Create User Journey Maps**:
    - **Entry Points**: How users arrive at this flow (direct link, navigation, search)
