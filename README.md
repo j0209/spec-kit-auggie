@@ -1,8 +1,8 @@
 # 🚀 Enhanced Spec-Kit: AUGGIE-Powered Complete Development
 
-**The Ultimate Spec-Driven Development Toolkit** - Now exclusively powered by **AUGGIE CLI** for complete project development including design, UX, and pragmatic engineering.
+**The Ultimate Spec-Driven Development Toolkit** - Now exclusively powered by **AUGGIE CLI** for both **greenfield** and **brownfield** development with complete project specifications.
 
-This is a revolutionary enhancement of GitHub's Spec-Kit that transforms it into a complete project development orchestrator. Unlike traditional spec tools that leave design and implementation details to interpretation, this version generates comprehensive specifications for every aspect of your project.
+This revolutionary enhancement of GitHub's Spec-Kit transforms it into a complete project development orchestrator. Unlike traditional spec tools that leave design and implementation details to interpretation, this version generates comprehensive specifications for every aspect of your project - whether you're starting fresh or enhancing existing codebases.
 
 > 📋 **Original Project**: Based on GitHub's [Spec-Kit](https://github.com/github/spec-kit) - enhanced with AUGGIE integration and multi-agent orchestration capabilities.
 
@@ -20,75 +20,188 @@ This is a revolutionary enhancement of GitHub's Spec-Kit that transforms it into
 - **Pragmatic Engineering**: Anti-over-engineering controls for maintainable solutions
 - **Complete Implementation Guidance**: Every detail specified for autonomous AUGGIE execution
 
-### 🔄 **Agentic Development Workflow**
-- **Master Planning Phase**: You + AUGGIE create comprehensive specifications
-- **Parallel Execution Phase**: Multiple AUGGIE agents execute detailed specifications
+### 🔄 **Dual Development Workflows**
+- **🌱 Greenfield**: Multi-project workspace for new development with full orchestration
+- **🏗️ Brownfield**: System-wide CLI for existing projects with codebase-aware specifications
 - **Context Window Efficiency**: Preserve your precious context for planning, not implementation
 - **Zero Interpretation Needed**: Specifications so detailed that execution is deterministic
 
-## 🎯 **Quick Start**
+## 🎯 **Installation & Setup**
 
-### **1. Install Dependencies**
-```bash
-pip install specify-cli truststore
-npm install -g @augmentcode/auggie  # For AUGGIE support
-```
-
-### **2. Initialize Project with AUGGIE**
+### **1. Install System-Wide CLI**
 ```bash
 # Clone this enhanced version
 git clone https://github.com/j0209/spec-kit-auggie.git
 cd spec-kit-auggie
 
-# Initialize project with AUGGIE
-python -c "from src.specify_cli import main; main()" init my-project --ai auggie
+# Install globally with uv (recommended)
+uv tool install .
+uv tool update-shell  # Updates your shell PATH
+
+# Or install with pip
+pip install -e .
+
+# Install AUGGIE CLI
+npm install -g @augmentcode/auggie
 ```
 
-### **3. Complete Multi-Project Development Workflow**
+### **2. Verify Installation**
 ```bash
-cd spec-kit-auggie
-source templates/auggie-commands.sh
+# Restart terminal or source your shell config
+source ~/.zshrc  # or ~/.bashrc
 
+# Test system-wide access
+specify --help
+specify check
+```
+
+## 🌱 **Greenfield Development (Multi-Project Workspace)**
+
+### **Setup Multi-Project Workspace**
+```bash
+# Initialize new Spec-Kit workspace
+specify init my-workspace
+
+# Or initialize in current directory
+specify init --here
+
+# Load AUGGIE commands
+cd my-workspace
+source templates/auggie-commands.sh
+```
+
+### **Complete Greenfield Workflow**
+```bash
 # 1. Create a new project with AUGGIE workspace
 auggie-new-project "task-manager" "A collaborative task management app" --tech-stack=react --complexity=enterprise
 
-# 2. 🚨 CRITICAL: Add comprehensive planning documents to context folder
-# This is what makes specifications professional vs generic!
+# 2. Add comprehensive context materials to .augment/context/
+# → PRD, market research, user personas, technical constraints, compliance requirements
 cd projects/task-manager/.augment/context/
-# Add your planning documents:
-# - PRD (Product Requirements Document)
-# - Market research and competitive analysis
-# - User personas and journey maps
-# - Technical constraints and architecture requirements
-# - Business requirements and success metrics
+# Add your planning documents here
 
-# 3. Request intelligent specification planning (orchestrator analyzes context)
-auggie-orchestrate-specs "task-manager" "Analyze context and create specification task list"
+# 3. Generate comprehensive specifications with intelligent orchestration
+auggie-orchestrate "task-manager" "Focus on SOC2 compliance and multi-tenant architecture"
 
-# 4. Execute parallel specification generation using shared task list
-# Multiple AUGGIE agents work in parallel, each referencing the same context materials:
+# 4. Review and approve milestone checkpoints
+auggie-review-milestone "task-manager" "definition"
+auggie-review-milestone "task-manager" "technical"
+auggie-review-milestone "task-manager" "final"
 
-# → AUGGIE 1 (Scope): auggie-scope-spec "task-manager" "User management system" --complexity=enterprise
-# → AUGGIE 2 (Design): auggie-design-spec "task-manager" "Modern SaaS interface with accessibility"
-# → AUGGIE 3 (UX): auggie-ux-spec "task-manager" "Intuitive user onboarding and dashboard flows"
-# → AUGGIE 4 (Security): auggie-security-spec "task-manager" "Enterprise authentication and authorization"
-# → AUGGIE 5 (Database): auggie-database-spec "task-manager" "Scalable data architecture"
-
-# 5. Generate technical specifications and implementation plans
-auggie-specify "task-manager" "Core platform functionality with real-time collaboration"
-auggie-plan "task-manager" "Microservices architecture with React frontend"
-
-# 6. Create detailed task breakdowns in native AUGGIE format
-auggie-tasks "task-manager"
-
-# 7. Export complete development workspace with orchestrator tools
-auggie-export-specs "task-manager" "/path/to/development/handoff/"
-
-# 8. Execute with multiple AUGGIE agents (parallel development)
-# Each agent gets complete specifications + context materials - no interpretation needed!
+# 5. Export complete development workspace with native AUGGIE task coordination
+auggie-export-specs "task-manager" "/path/to/development/workspace/"
 ```
 
-## 🏗️ **Multi-Project Architecture**
+### **Available Greenfield Commands**
+```bash
+# Project Management
+auggie-new-project "name" "description" [--tech-stack=react] [--complexity=simple|enterprise]
+auggie-list-projects
+auggie-project-status "project-name"
+
+# Comprehensive Specifications
+auggie-scope-spec "project-name" "feature" --complexity=simple|enterprise
+auggie-design-spec "project-name" "modern SaaS interface"
+auggie-ux-spec "project-name" "intuitive user onboarding"
+auggie-component-design "project-name" "data table with filtering"
+
+# Technical Specifications
+auggie-security-spec "project-name" "user data protection"
+auggie-database-spec "project-name" "user management data model"
+auggie-api-spec "project-name" "REST API with rate limiting"
+auggie-infrastructure-spec "project-name" "Kubernetes deployment"
+auggie-monitoring-spec "project-name" "application performance tracking"
+auggie-testing-spec "project-name" "load testing strategy"
+auggie-operations-spec "project-name" "24/7 support procedures"
+
+# Implementation Planning
+auggie-specify "project-name" "core functionality description"
+auggie-plan "project-name" "technical implementation approach"
+auggie-tasks "project-name" "additional context"
+
+# Workflow Management
+auggie-orchestrate "project-name" "intelligent specification planning"
+auggie-review-milestone "project-name" "definition|technical|final"
+auggie-approve-milestone "project-name" "milestone-name"
+auggie-export-specs "project-name" "/path/to/export/"
+```
+
+## 🏗️ **Brownfield Development (Existing Projects)**
+
+### **Add Spec-Kit to Existing Project**
+```bash
+# Navigate to your existing project
+cd /path/to/existing-project
+
+# Initialize Spec-Kit integration (lightweight)
+specify init --brownfield
+
+# Add your project context materials
+cp your-docs/* .augment/context/
+# or create new ones:
+echo "# Business Requirements..." > .augment/context/business-requirements.md
+echo "# Technical Architecture..." > .augment/context/existing-architecture.md
+```
+
+### **Generate Context-Aware Specifications**
+```bash
+# Generate scope specification (analyzes existing codebase)
+specify scope-spec "Add user authentication system" --complexity=enterprise
+
+# Create design specification (matches existing UI patterns)
+specify design-spec "Modern login interface with existing design system"
+
+# Generate implementation plan (leverages existing infrastructure)
+specify plan "JWT authentication with existing Express.js backend and PostgreSQL"
+
+# Create development tasks (considers existing file structure)
+specify tasks "Focus on security best practices and existing patterns"
+
+# Check project status
+specify status
+```
+
+### **Available Brownfield Commands**
+```bash
+# Initialization
+specify init --brownfield              # Add Spec-Kit to existing project
+specify status                         # Check integration status
+
+# Specification Generation (Context-Aware)
+specify scope-spec "feature description" [--complexity=simple|enterprise]
+specify design-spec "UI/UX description"
+specify plan "technical implementation details"
+specify tasks "additional context"
+
+# All commands automatically:
+# - Use codebase-retrieval to analyze existing architecture
+# - Generate specifications that fit existing patterns
+# - Respect current technology stack and constraints
+# - Reference existing files and conventions
+```
+
+### **Project Structure (Brownfield)**
+```
+your-existing-project/
+├── .augment/
+│   ├── context/              # Your project context materials
+│   │   ├── business-requirements.md
+│   │   ├── existing-architecture.md
+│   │   ├── technical-constraints.md
+│   │   └── user-personas.md
+│   └── guidelines.md         # AUGGIE instructions for your project
+├── specs/                    # Generated specifications
+│   └── 001-user-auth/
+│       ├── scope-spec.md
+│       ├── design-spec.md
+│       ├── plan.md
+│       └── tasks.md
+├── memory/
+│   └── constitution.md       # Project constraints and principles
+└── (your existing files unchanged)
+```
+
+## 🏗️ **Multi-Project Architecture (Greenfield)**
 
 ### **🎯 Project Context Isolation**
 The enhanced Spec-Kit uses a **multi-project structure** that prevents AUGGIE from conflating different projects:
@@ -117,44 +230,66 @@ spec-kit-auggie/
 - **No Confusion**: Never conflates your project with Spec-Kit framework
 - **Scalable**: Manage multiple projects from one Spec-Kit installation
 
-## 🎨 **Enhanced AUGGIE Commands**
+## 📋 **Command Reference**
 
-### **Project Management**
+### **🌱 Greenfield Commands (Multi-Project Workspace)**
+*Use these commands from within a Spec-Kit workspace after running `source templates/auggie-commands.sh`*
+
+#### **Project Management**
 | Command | Purpose | Example |
 |---------|---------|---------|
 | `auggie-new-project` | Create new project | `auggie-new-project "task-manager" "A collaborative app" --tech-stack=react` |
 | `auggie-list-projects` | List all projects | `auggie-list-projects` |
 | `auggie-project-status` | Show project status | `auggie-project-status "task-manager"` |
 
-### **Specification Commands** (All require project context)
+#### **Specification Commands** (All require project context)
 | Command | Purpose | Example |
 |---------|---------|---------|
 | `auggie-scope-spec` | Pragmatic scope control | `auggie-scope-spec "task-manager" "User auth" --complexity=simple` |
 | `auggie-design-spec` | Visual design system | `auggie-design-spec "task-manager" "Modern SaaS dashboard"` |
 | `auggie-ux-spec` | User experience flows | `auggie-ux-spec "task-manager" "User onboarding flow"` |
-| `auggie-security-spec` | **Security specifications** | `auggie-security-spec "task-manager" "User data protection"` |
-| `auggie-database-spec` | **Database specifications** | `auggie-database-spec "task-manager" "User and task data model"` |
-| `auggie-infrastructure-spec` | **Infrastructure & deployment** | `auggie-infrastructure-spec "task-manager" "Kubernetes deployment"` |
-| `auggie-monitoring-spec` | **Monitoring & observability** | `auggie-monitoring-spec "task-manager" "Performance monitoring"` |
-| `auggie-api-spec` | **API & integration** | `auggie-api-spec "task-manager" "REST API with caching"` |
-| `auggie-testing-spec` | **Testing strategy** | `auggie-testing-spec "task-manager" "Load testing strategy"` |
-| `auggie-operations-spec` | **Operations & maintenance** | `auggie-operations-spec "task-manager" "24/7 support procedures"` |
-| `auggie-orchestrate` | **🎭 Intelligent planning** | `auggie-orchestrate "task-manager" "Focus on compliance"` |
-| `auggie-tasks` | **🚀 Development tasks** | `auggie-tasks "task-manager" "Focus on backend API first"` |
-| `auggie-export-specs` | **📦 Development workspace** | `auggie-export-specs "task-manager" "/path/to/dev/"` |
-| `auggie-component-design` | Component specifications | `auggie-component-design "task-manager" "Data table with filters"` |
-| `auggie-specify` | Technical specifications | `auggie-specify "task-manager" "JWT authentication system"` |
-| `auggie-plan` | Implementation plans | `auggie-plan "task-manager" "Express + PostgreSQL + bcrypt"` |
-| `auggie-tasks` | **AUGGIE-compatible task breakdown** | `auggie-tasks "task-manager"` |
+| `auggie-security-spec` | Security specifications | `auggie-security-spec "task-manager" "User data protection"` |
+| `auggie-database-spec` | Database specifications | `auggie-database-spec "task-manager" "User and task data model"` |
+| `auggie-infrastructure-spec` | Infrastructure & deployment | `auggie-infrastructure-spec "task-manager" "Kubernetes deployment"` |
+
+### **🏗️ Brownfield Commands (System-Wide CLI)**
+*Use these commands from any existing project directory*
+
+#### **Initialization & Status**
+| Command | Purpose | Example |
+|---------|---------|---------|
+| `specify init --brownfield` | Add Spec-Kit to existing project | `specify init --brownfield` |
+| `specify status` | Check integration status | `specify status` |
+
+#### **Context-Aware Specifications**
+| Command | Purpose | Example |
+|---------|---------|---------|
+| `specify scope-spec` | Generate scope specification | `specify scope-spec "Add user auth" --complexity=enterprise` |
+| `specify design-spec` | Create design specification | `specify design-spec "Modern login interface"` |
+| `specify plan` | Generate implementation plan | `specify plan "JWT with existing backend"` |
+| `specify tasks` | Create development tasks | `specify tasks "Focus on security best practices"` |
+
+#### **Key Differences**
+- **🌱 Greenfield**: Multi-project workspace with `auggie-*` commands requiring project names
+- **🏗️ Brownfield**: Single project integration with `specify` commands using current directory context
+- **Context Awareness**: Brownfield commands automatically analyze existing codebase patterns
+- **Installation**: Greenfield requires workspace setup, Brownfield works system-wide
 
 ## 🎯 **Revolutionary Features**
 
-### **🏗️ Multi-Project Architecture**
+### **🌱 Greenfield Development (Multi-Project)**
 - **Project Context Isolation**: Each project has its own specifications and context
 - **Knowledge Reuse**: Patterns learned from one project inform others
 - **No Framework Confusion**: AUGGIE never conflates your projects with Spec-Kit itself
 - **Scalable Management**: Handle multiple projects from one Spec-Kit installation
-- **Language Agnostic**: Python Spec-Kit can plan any technology stack
+- **Parallel Orchestration**: Multiple AUGGIE agents working simultaneously on different specifications
+
+### **🏗️ Brownfield Development (Existing Projects)**
+- **Codebase-Aware Specifications**: Analyzes existing architecture before generating specs
+- **Pattern Preservation**: Respects existing coding patterns and conventions
+- **Technology Stack Integration**: Works with any existing technology stack
+- **Lightweight Integration**: Minimal directory structure that doesn't disrupt existing projects
+- **Context-Driven Planning**: Uses existing documentation and codebase analysis
 
 ### **🚀 Enhanced Development Task System**
 - **Native AUGGIE Task Format**: Development tasks generated in AUGGIE's native task management format
@@ -163,26 +298,13 @@ spec-kit-auggie/
 - **Context-Rich Tasks**: Each task references specific specification documents for autonomous execution
 - **Multi-AUGGIE Coordination**: Development teams can deploy 3-5 AUGGIE agents working simultaneously
 
-### **🎭 Intelligent Orchestration with Parallel Execution**
-- **AUGGIE Orchestrator** analyzes project context and creates intelligent specification task lists
-- **Parallel Specification Generation** with multiple specialized AUGGIE instances working simultaneously
-- **80% Time Reduction** through parallel execution vs sequential specification creation
-- **Context-Driven Planning** - only creates specifications that are actually needed for the project
-
 ### **🤖 Enhanced AUGGIE Integration**
-- **Project-Specific Workspaces**: Individual `.augment/` directories with isolated context and shared task management
+- **Dual Context Support**: Works in both greenfield workspaces and brownfield projects
 - **Context-Aware Professional Planning**: Uses comprehensive input documents (PRD, research, personas)
-- **Never Vibe Coding**: Always references comprehensive planning materials, not simple descriptions
+- **Codebase Analysis**: Brownfield commands use `codebase-retrieval` for existing architecture understanding
 - **Implementation Planning Focus**: Professional specifications based on deep context analysis
 - **Smart Approval Gates**: Automatic `[NEEDS CLARIFICATION]` detection with milestone reviews
 - **Professional Export System**: Complete specification packages with context materials included
-
-### **🔄 AUGGIE Task Format Compatibility**
-- **Native AUGGIE Task Generation**: Development tasks created in AUGGIE's native task management format
-- **Manual Import Capability**: Generated development tasks can be imported into separate AUGGIE projects
-- **Planning Task Management**: Project-specific planning tasks for tracking specification workflow
-- **Task Hierarchy Preservation**: Maintains phases, dependencies, and parallel execution markers
-- **Seamless Workflow Integration**: Plan with Spec-Kit, execute with AUGGIE agents in development projects
 
 ### **🎨 Complete Design Integration**
 - **Visual Design Systems**: Colors, typography, spacing, components with exact CSS specifications
@@ -490,6 +612,49 @@ auggie-export-specs "task-manager" "/path/to/development/"
 # Note: These are DEVELOPMENT tasks for implementation, not planning tasks
 # Planning tasks are managed separately within each project's .augment/tasks.json
 ```
+
+## 🎯 **Quick Reference**
+
+### **Choose Your Workflow**
+
+#### **🌱 For New Projects (Greenfield)**
+```bash
+# 1. Install and setup workspace
+uv tool install . && uv tool update-shell
+specify init my-workspace
+cd my-workspace && source templates/auggie-commands.sh
+
+# 2. Create and develop projects
+auggie-new-project "my-app" "Description" --tech-stack=react
+auggie-orchestrate "my-app" "Focus on user experience"
+auggie-export-specs "my-app" "/path/to/development/"
+```
+
+#### **🏗️ For Existing Projects (Brownfield)**
+```bash
+# 1. Install system-wide
+uv tool install . && uv tool update-shell
+
+# 2. Add to existing project
+cd /path/to/existing-project
+specify init --brownfield
+
+# 3. Generate context-aware specifications
+specify scope-spec "Add user authentication" --complexity=enterprise
+specify design-spec "Modern login interface"
+specify plan "JWT with existing backend"
+specify tasks "Security best practices"
+```
+
+### **Key Benefits**
+
+| Feature | Greenfield | Brownfield |
+|---------|------------|------------|
+| **Setup** | Multi-project workspace | Lightweight integration |
+| **Context** | Project isolation | Existing codebase analysis |
+| **Commands** | `auggie-*` with project names | `specify` with current directory |
+| **Use Case** | New development from scratch | Adding features to existing apps |
+| **AUGGIE Power** | Full orchestration & parallel execution | Codebase-aware specifications |
 
 ## 🤝 **Contributing**
 
