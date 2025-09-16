@@ -463,11 +463,11 @@ auggie-plan() {
     auggie-check-clarifications "$project_name" "technical"
 }
 
-# AUGGIE-Tasks: Generate development tasks in native AUGGIE format with parallel execution support
+# AUGGIE-Tasks: Generate development tasks in JSON format for external AUGGIE team coordination
 auggie-tasks() {
     if [ $# -eq 0 ]; then
         echo "Usage: auggie-tasks \"project-name\" [additional-context]"
-        echo "Example: auggie-tasks \"task-manager\" \"Focus on backend API first\""
+        echo "Example: auggie-tasks \"OrthoSphere\" \"Focus on video player implementation first\""
         echo ""
         echo "💡 Available projects:"
         auggie-list-projects
@@ -484,99 +484,170 @@ auggie-tasks() {
     local repo_root=$(get_repo_root)
     local project_dir=$(get_project_dir "$project_name")
 
-    echo "🚀 Generating development tasks in native AUGGIE format..."
+    echo "🚀 Generating development tasks in JSON format for external AUGGIE coordination..."
     echo "🎯 Project: $project_name"
     if [ -n "$context_info" ]; then
         echo "📌 Context: $context_info"
     fi
-    echo "⚡ Features: Parallel execution support, dependency management, conflict prevention"
+    echo "⚡ Features: Parallel execution phases, dependency management, conflict prevention"
+    echo "📁 Output: specs/tasks.json (for external development teams)"
     echo ""
 
     # Execute AUGGIE from project directory to use project-specific context
     cd "$project_dir" && auggie --quiet --print "
-    I need you to generate comprehensive development tasks using the enhanced task generation system.
-
-    Load the command definition from ../../templates/commands/auggie/enhanced-tasks.md and follow its instructions exactly.
+    I need you to generate comprehensive development tasks for external AUGGIE team coordination.
 
     PROJECT CONTEXT:
     - Project Name: $project_name
     - Project Directory: $project_dir (current working directory)
     - Development Focus: $context_info
     - Context Materials: Available in .augment/context/ directory
-    - Project Guidelines: Available in .augment/guidelines.md
     - All Specifications: Available in specs/ directory
 
     CRITICAL REQUIREMENTS:
-    1. **Generate Native AUGGIE Tasks**: Use add_tasks() format, NOT markdown checklists
-    2. **Parallel Execution Support**: Mark tasks that can run simultaneously without conflicts
+    1. **Generate JSON Format**: Create specs/tasks.json file with exact structure for external teams
+    2. **Parallel Execution Phases**: Organize tasks into phases with parallel execution opportunities
     3. **Dependency Management**: Create proper task dependencies to prevent conflicts
     4. **Context Integration**: Reference specific specification documents in each task
     5. **Conflict Prevention**: Ensure no two parallel tasks modify the same files
 
-    ENHANCED TASK GENERATION PROCESS:
+    TASK GENERATION PROCESS:
     1. **Analyze All Specifications**: Read every spec in specs/ directory for complete understanding
     2. **Extract Technology Stack**: Determine languages, frameworks, and architecture from specs
     3. **Identify Task Categories**: Setup, Database, API, Frontend, Testing, Security, etc.
     4. **Plan Dependencies**: Map which tasks must complete before others can start
     5. **Mark Parallel Safety**: Identify tasks that can run simultaneously without file conflicts
-    6. **Create Native Format**: Generate tasks using AUGGIE's add_tasks() command format
+    6. **Create JSON Format**: Generate tasks.json in specs/ directory with exact structure
     7. **Include Context References**: Link each task to relevant specification documents
     8. **Estimate Effort**: Provide realistic time estimates based on complexity
 
-    PARALLEL EXECUTION STRATEGY:
-    - **Phase 1**: Sequential setup tasks (project init, core config)
-    - **Phase 2**: Parallel model/entity tasks (different files, no conflicts)
-    - **Phase 3**: Parallel service layer tasks (independent business logic)
-    - **Phase 4**: Parallel API/frontend tasks (different endpoints/components)
-    - **Phase 5**: Parallel testing tasks (independent test suites)
+    REQUIRED JSON STRUCTURE WITH SUBTASKS:
+    {
+      \"project\": \"$project_name\",
+      \"type\": \"development_tasks\",
+      \"created\": \"$(date +%Y-%m-%d)\",
+      \"total_estimated_hours\": 0,
+      \"tasks\": [
+        {
+          \"id\": \"T001\",
+          \"name\": \"Parent Task Name\",
+          \"description\": \"High-level task description (6+ hours)\",
+          \"type\": \"setup|backend_setup|authentication|data_layer|frontend_component|feature_implementation|ui_ux_implementation|internationalization|testing\",
+          \"estimated_hours\": 0,
+          \"status\": \"pending\",
+          \"assigned_agent\": null,
+          \"dependencies\": [],
+          \"parallel_safe\": false,
+          \"context_references\": [],
+          \"subtasks\": [
+            {
+              \"id\": \"T001-1\",
+              \"name\": \"[P] Specific Subtask Name\",
+              \"description\": \"Granular work item (2-4 hours max)\",
+              \"status\": \"not_started\",
+              \"files\": [\"specific/file/paths.ts\"],
+              \"estimated_hours\": 3,
+              \"parallel\": true,
+              \"dependencies\": [],
+              \"execution_order\": 1
+            },
+            {
+              \"id\": \"T001-2\",
+              \"name\": \"Sequential Subtask Name\",
+              \"description\": \"Work that depends on T001-1\",
+              \"status\": \"not_started\",
+              \"files\": [\"other/file/paths.ts\"],
+              \"estimated_hours\": 2,
+              \"parallel\": false,
+              \"dependencies\": [\"T001-1\"],
+              \"execution_order\": 2
+            }
+          ]
+        }
+      ],
+      \"execution_phases\": {
+        \"phase_1_foundation\": {
+          \"tasks\": [],
+          \"parallel_execution\": [],
+          \"sequential_after\": {}
+        },
+        \"phase_2_core_features\": {
+          \"tasks\": [],
+          \"parallel_execution\": [],
+          \"dependencies\": {}
+        },
+        \"phase_3_integration\": {
+          \"tasks\": [],
+          \"sequential_execution\": true,
+          \"dependencies\": {}
+        },
+        \"phase_4_quality_assurance\": {
+          \"tasks\": [],
+          \"dependencies\": {}
+        }
+      }
+    }
+
+    EXECUTION PHASES STRATEGY:
+    - **Phase 1**: Foundation tasks (project setup, core configuration, database setup)
+    - **Phase 2**: Core features (models, services, basic components) - HIGH PARALLELISM
+    - **Phase 3**: Integration tasks (complex features, UI integration) - SEQUENTIAL
+    - **Phase 4**: Quality assurance (testing, optimization, deployment)
 
     CONFLICT PREVENTION RULES:
-    - Tasks modifying the same file: MUST be sequential (no parallel)
-    - Tasks modifying different files: CAN be parallel
+    - Tasks modifying the same file: MUST be sequential (parallel_safe: false)
+    - Tasks modifying different files: CAN be parallel (parallel_safe: true)
     - Database schema changes: MUST be sequential
     - Configuration file changes: MUST be sequential
     - Independent components/services: CAN be parallel
 
-    OUTPUT FORMAT:
-    Generate tasks using AUGGIE's native task management system:
+    CRITICAL SUBTASK REQUIREMENTS:
+    1. **Break Down Large Tasks**: Any task >5 hours MUST be broken into 2-4 subtasks
+    2. **Granular Subtasks**: Each subtask should be 2-4 hours max (single dev session)
+    3. **Parallel Markers**: Use [P] prefix for parallel-safe subtasks
+    4. **File Specificity**: Each subtask lists exact files it creates/modifies
+    5. **Clear Dependencies**: Map subtask dependencies to prevent conflicts
+    6. **Execution Order**: Group subtasks by execution phase (1, 2, 3, etc.)
+    7. **Agent Assignment Ready**: Each subtask can be assigned to individual agents
 
-    Use add_tasks() with this structure for each task:
-    {
-      \"name\": \"Task Name\",
-      \"description\": \"Detailed description with file paths and context references\",
-      \"state\": \"NOT_STARTED\",
-      \"parent_task_id\": \"parent-id\" (if subtask),
-      \"after_task_id\": \"dependency-id\" (if sequential dependency)
-    }
+    SUBTASK BREAKDOWN STRATEGY:
+    - **Setup Tasks**: Project init → Dependencies → Configuration → Environment
+    - **Backend Tasks**: Schema → Models → Services → API endpoints
+    - **Frontend Tasks**: Components → Hooks → Pages → Integration
+    - **Testing Tasks**: Unit tests → Integration tests → E2E tests → Performance tests
 
     IMPORTANT:
-    - Create a complete development task list that enables multiple AUGGIE agents to work in parallel
-    - Ensure tasks have sufficient detail and context for autonomous execution
-    - Include specific file paths, context references, and implementation guidance
-    - Plan for optimal parallel execution while preventing conflicts
+    1. **Save to specs/tasks.json** - NOT .augment/tasks.json
+    2. **Use exact JSON structure with subtasks** - No extra comments or formatting
+    3. **Calculate total_estimated_hours** - Sum of all subtask estimates
+    4. **Complete dependency mapping** - Ensure proper subtask ordering
+    5. **Realistic effort estimates** - 2-4 hours per subtask maximum
+    6. **Comprehensive file paths** - Include all files each subtask will create/modify
+    7. **Context references** - Link to relevant specification documents
+    8. **Agent-ready granularity** - Each subtask is a complete, assignable work unit
 
-    Execute the enhanced task generation now.
+    Generate the complete tasks.json file with detailed subtasks now and save it to specs/tasks.json.
     "
 
     # Check for clarifications after task creation
     auggie-check-clarifications "$project_name" "development-tasks"
 
     echo ""
-    echo "✅ Enhanced development tasks generated successfully!"
+    echo "✅ Development tasks JSON generated successfully!"
     echo ""
     echo "🎯 Task Features:"
-    echo "   ✅ Native AUGGIE format with add_tasks() commands"
-    echo "   ✅ Parallel execution support with conflict prevention"
+    echo "   ✅ JSON format in specs/tasks.json for external AUGGIE teams"
+    echo "   ✅ Parallel execution phases with conflict prevention"
     echo "   ✅ Comprehensive dependency management"
     echo "   ✅ Context references to all specifications"
     echo "   ✅ Realistic effort estimates and file-level planning"
     echo ""
-    echo "🚀 Multiple AUGGIE agents can now coordinate development using:"
-    echo "   📋 auggie view_tasklist  # View all development tasks"
-    echo "   ⚡ auggie update_tasks   # Coordinate parallel execution"
-    echo "   🎯 Context-aware task execution with specification references"
+    echo "🚀 External AUGGIE development teams can now coordinate using:"
+    echo "   📋 Import specs/tasks.json into their development environment"
+    echo "   ⚡ Execute tasks in parallel according to phase structure"
+    echo "   🎯 Context-aware development with specification references"
     echo ""
-    echo "📁 Development workspace ready for export and AUGGIE coordination!"
+    echo "📁 Development task coordination ready for export!"
 }
 
 # AUGGIE-Create-Dev-Workspace: Generate complete .augment/ workspace for development project
