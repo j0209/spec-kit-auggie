@@ -302,13 +302,33 @@ spec-kit-auggie/
 | `specify status` | Check integration status | `specify status` |
 | `specify check` | Verify AUGGIE CLI availability | `specify check` |
 
-#### **Context-Aware Specifications** (Analyzes existing codebase patterns)
+#### **Complete Specification Commands** (Full parity with greenfield)
 | Command | Purpose | Example |
 |---------|---------|---------|
-| `specify scope-spec` | Generate scope specification | `specify scope-spec "Add user auth" --complexity=enterprise` |
-| `specify design-spec` | Create design specification | `specify design-spec "Modern login interface"` |
-| `specify plan` | Generate implementation plan | `specify plan "JWT with existing backend"` |
-| `specify tasks` | Create development tasks | `specify tasks "Focus on security best practices"` |
+| `specify scope-spec` | Pragmatic scope control | `specify scope-spec "Add user auth" --complexity=enterprise` |
+| `specify design-spec` | Visual design system | `specify design-spec "Modern login interface"` |
+| `specify ux-spec` | User experience flows | `specify ux-spec "User onboarding flow"` |
+| `specify component-design` | Component specifications | `specify component-design "Data table with filters"` |
+| `specify security-spec` | Security specifications | `specify security-spec "User data protection"` |
+| `specify database-spec` | Database specifications | `specify database-spec "User and task data model"` |
+| `specify api-spec` | API & integration specs | `specify api-spec "REST API with rate limiting"` |
+| `specify infrastructure-spec` | Infrastructure & deployment | `specify infrastructure-spec "Kubernetes deployment"` |
+| `specify monitoring-spec` | Monitoring & observability | `specify monitoring-spec "Performance tracking"` |
+| `specify testing-spec` | Testing strategy | `specify testing-spec "Load testing strategy"` |
+| `specify operations-spec` | Operations & maintenance | `specify operations-spec "24/7 support procedures"` |
+
+#### **Implementation Planning** (Full parity with greenfield)
+| Command | Purpose | Example |
+|---------|---------|---------|
+| `specify specify` | Technical specifications | `specify specify "JWT authentication system"` |
+| `specify plan` | Implementation plans | `specify plan "Express + PostgreSQL + bcrypt"` |
+| `specify tasks` | Development task breakdown | `specify tasks "Focus on backend API first"` |
+
+#### **Workflow Management** (Full parity with greenfield)
+| Command | Purpose | Example |
+|---------|---------|---------|
+| `specify orchestrate` | Intelligent planning | `specify orchestrate "Focus on compliance"` |
+| `specify export-specs` | Export development workspace | `specify export-specs "/path/to/dev/"` |
 
 #### **Key Brownfield Features**
 - **🔍 Codebase Analysis**: Uses `codebase-retrieval` to understand existing architecture
@@ -320,8 +340,10 @@ spec-kit-auggie/
 #### **Key Differences**
 - **🌱 Greenfield**: Multi-project workspace with `auggie-*` commands requiring project names
 - **🏗️ Brownfield**: Single project integration with `specify` commands using current directory context
+- **Command Parity**: Both workflows have identical specification capabilities
 - **Context Awareness**: Brownfield commands automatically analyze existing codebase patterns
 - **Installation**: Greenfield requires workspace setup, Brownfield works system-wide
+- **Full Feature Set**: All 20+ specification commands available in both workflows
 
 ## 🎯 **Revolutionary Features**
 

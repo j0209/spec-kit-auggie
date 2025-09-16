@@ -1259,6 +1259,170 @@ def design_spec(
         console.print("[red]❌ Failed to generate design specification[/red]")
 
 
+@app.command(name="ux-spec")
+def ux_spec(
+    description: str = typer.Argument(..., help="UX description for user experience specification"),
+):
+    """Generate UX specification for existing project."""
+    require_brownfield_context()
+
+    console.print(f"[bold]Generating UX specification...[/bold]")
+    console.print(f"UX Flow: {description}")
+
+    command_template = f"""
+    Generate a comprehensive UX specification for a brownfield project.
+
+    Use codebase-retrieval to analyze the existing codebase and understand:
+    1. Current user interface patterns and navigation structure
+    2. Existing user flows and interaction patterns
+    3. Current accessibility implementations
+    4. Existing error handling and user feedback patterns
+
+    UX Description: {description}
+
+    Generate a UX specification that:
+    - Builds upon existing user interface patterns
+    - Maintains consistency with current user flows
+    - Enhances existing accessibility features
+    - Follows established interaction patterns
+    - Provides detailed user journey maps
+    - Includes micro-interactions and transitions
+
+    Save the UX specification in specs/ directory.
+    """
+
+    success = execute_auggie_command(command_template, f"UX specification for: {description}")
+
+    if success:
+        console.print("[green]✅ UX specification generated successfully![/green]")
+        console.print("Check the specs/ directory for your new UX specification.")
+    else:
+        console.print("[red]❌ Failed to generate UX specification[/red]")
+
+
+@app.command(name="component-design")
+def component_design(
+    description: str = typer.Argument(..., help="Component description for design specification"),
+):
+    """Generate component design specification for existing project."""
+    require_brownfield_context()
+
+    console.print(f"[bold]Generating component design specification...[/bold]")
+    console.print(f"Component: {description}")
+
+    command_template = f"""
+    Generate a comprehensive component design specification for a brownfield project.
+
+    Use codebase-retrieval to analyze the existing codebase and understand:
+    1. Current component library and design system
+    2. Existing component patterns and naming conventions
+    3. Current styling approach (CSS modules, styled-components, etc.)
+    4. Existing component props and API patterns
+
+    Component Description: {description}
+
+    Generate a component design specification that:
+    - Follows existing component architecture patterns
+    - Uses established design system tokens and styles
+    - Maintains consistency with current component APIs
+    - Includes all component states and variants
+    - Provides detailed implementation guidance
+    - Specifies responsive behavior and accessibility
+
+    Save the component design specification in specs/ directory.
+    """
+
+    success = execute_auggie_command(command_template, f"Component design specification for: {description}")
+
+    if success:
+        console.print("[green]✅ Component design specification generated successfully![/green]")
+        console.print("Check the specs/ directory for your new component design specification.")
+    else:
+        console.print("[red]❌ Failed to generate component design specification[/red]")
+
+
+@app.command(name="security-spec")
+def security_spec(
+    description: str = typer.Argument(..., help="Security description for security specification"),
+):
+    """Generate security specification for existing project."""
+    require_brownfield_context()
+
+    console.print(f"[bold]Generating security specification...[/bold]")
+    console.print(f"Security Focus: {description}")
+
+    command_template = f"""
+    Generate a comprehensive security specification for a brownfield project.
+
+    Use codebase-retrieval to analyze the existing codebase and understand:
+    1. Current authentication and authorization patterns
+    2. Existing security middleware and validation
+    3. Current data protection and encryption approaches
+    4. Existing security headers and CORS configuration
+
+    Security Description: {description}
+
+    Generate a security specification that:
+    - Builds upon existing security infrastructure
+    - Follows current authentication patterns
+    - Enhances existing security measures
+    - Addresses current security vulnerabilities
+    - Provides implementation guidance for security features
+    - Includes threat modeling and risk assessment
+
+    Save the security specification in specs/ directory.
+    """
+
+    success = execute_auggie_command(command_template, f"Security specification for: {description}")
+
+    if success:
+        console.print("[green]✅ Security specification generated successfully![/green]")
+        console.print("Check the specs/ directory for your new security specification.")
+    else:
+        console.print("[red]❌ Failed to generate security specification[/red]")
+
+
+@app.command(name="database-spec")
+def database_spec(
+    description: str = typer.Argument(..., help="Database description for database specification"),
+):
+    """Generate database specification for existing project."""
+    require_brownfield_context()
+
+    console.print(f"[bold]Generating database specification...[/bold]")
+    console.print(f"Database Design: {description}")
+
+    command_template = f"""
+    Generate a comprehensive database specification for a brownfield project.
+
+    Use codebase-retrieval to analyze the existing codebase and understand:
+    1. Current database schema and table structures
+    2. Existing data models and relationships
+    3. Current migration patterns and database tooling
+    4. Existing indexing and performance optimization
+
+    Database Description: {description}
+
+    Generate a database specification that:
+    - Extends existing database schema appropriately
+    - Follows current data modeling patterns
+    - Maintains referential integrity with existing data
+    - Uses established migration and versioning patterns
+    - Considers existing performance characteristics
+    - Provides detailed schema changes and migration scripts
+
+    Save the database specification in specs/ directory.
+    """
+
+    success = execute_auggie_command(command_template, f"Database specification for: {description}")
+
+    if success:
+        console.print("[green]✅ Database specification generated successfully![/green]")
+        console.print("Check the specs/ directory for your new database specification.")
+    else:
+        console.print("[red]❌ Failed to generate database specification[/red]")
+
+
 @app.command(name="plan")
 def plan(
     description: str = typer.Argument(..., help="Technical implementation details"),
@@ -1299,6 +1463,211 @@ def plan(
         console.print("Check the specs/ directory for your new implementation plan.")
     else:
         console.print("[red]❌ Failed to generate implementation plan[/red]")
+
+
+@app.command(name="api-spec")
+def api_spec(
+    description: str = typer.Argument(..., help="API description for API specification"),
+):
+    """Generate API specification for existing project."""
+    require_brownfield_context()
+
+    console.print(f"[bold]Generating API specification...[/bold]")
+    console.print(f"API Design: {description}")
+
+    command_template = f"""
+    Generate a comprehensive API specification for a brownfield project.
+
+    Use codebase-retrieval to analyze the existing codebase and understand:
+    1. Current API structure and endpoint patterns
+    2. Existing request/response formats and validation
+    3. Current authentication and authorization for APIs
+    4. Existing error handling and status code patterns
+
+    API Description: {description}
+
+    Generate an API specification that:
+    - Follows existing API design patterns and conventions
+    - Uses established request/response formats
+    - Maintains consistency with current authentication
+    - Follows existing error handling patterns
+    - Provides detailed endpoint documentation
+    - Includes request/response examples and schemas
+
+    Save the API specification in specs/ directory.
+    """
+
+    success = execute_auggie_command(command_template, f"API specification for: {description}")
+
+    if success:
+        console.print("[green]✅ API specification generated successfully![/green]")
+        console.print("Check the specs/ directory for your new API specification.")
+    else:
+        console.print("[red]❌ Failed to generate API specification[/red]")
+
+
+@app.command(name="infrastructure-spec")
+def infrastructure_spec(
+    description: str = typer.Argument(..., help="Infrastructure description for deployment specification"),
+):
+    """Generate infrastructure specification for existing project."""
+    require_brownfield_context()
+
+    console.print(f"[bold]Generating infrastructure specification...[/bold]")
+    console.print(f"Infrastructure: {description}")
+
+    command_template = f"""
+    Generate a comprehensive infrastructure specification for a brownfield project.
+
+    Use codebase-retrieval to analyze the existing codebase and understand:
+    1. Current deployment configuration and infrastructure
+    2. Existing containerization and orchestration setup
+    3. Current CI/CD pipelines and deployment processes
+    4. Existing monitoring and logging infrastructure
+
+    Infrastructure Description: {description}
+
+    Generate an infrastructure specification that:
+    - Builds upon existing deployment infrastructure
+    - Uses established containerization patterns
+    - Integrates with current CI/CD processes
+    - Leverages existing monitoring and logging
+    - Provides detailed deployment and scaling guidance
+    - Includes infrastructure as code templates
+
+    Save the infrastructure specification in specs/ directory.
+    """
+
+    success = execute_auggie_command(command_template, f"Infrastructure specification for: {description}")
+
+    if success:
+        console.print("[green]✅ Infrastructure specification generated successfully![/green]")
+        console.print("Check the specs/ directory for your new infrastructure specification.")
+    else:
+        console.print("[red]❌ Failed to generate infrastructure specification[/red]")
+
+
+@app.command(name="monitoring-spec")
+def monitoring_spec(
+    description: str = typer.Argument(..., help="Monitoring description for observability specification"),
+):
+    """Generate monitoring specification for existing project."""
+    require_brownfield_context()
+
+    console.print(f"[bold]Generating monitoring specification...[/bold]")
+    console.print(f"Monitoring: {description}")
+
+    command_template = f"""
+    Generate a comprehensive monitoring specification for a brownfield project.
+
+    Use codebase-retrieval to analyze the existing codebase and understand:
+    1. Current monitoring and observability setup
+    2. Existing logging patterns and log aggregation
+    3. Current metrics collection and alerting
+    4. Existing performance monitoring and APM tools
+
+    Monitoring Description: {description}
+
+    Generate a monitoring specification that:
+    - Extends existing monitoring infrastructure
+    - Uses established logging and metrics patterns
+    - Integrates with current alerting systems
+    - Builds upon existing observability tools
+    - Provides detailed monitoring implementation guidance
+    - Includes dashboards and alert configurations
+
+    Save the monitoring specification in specs/ directory.
+    """
+
+    success = execute_auggie_command(command_template, f"Monitoring specification for: {description}")
+
+    if success:
+        console.print("[green]✅ Monitoring specification generated successfully![/green]")
+        console.print("Check the specs/ directory for your new monitoring specification.")
+    else:
+        console.print("[red]❌ Failed to generate monitoring specification[/red]")
+
+
+@app.command(name="testing-spec")
+def testing_spec(
+    description: str = typer.Argument(..., help="Testing description for testing strategy specification"),
+):
+    """Generate testing specification for existing project."""
+    require_brownfield_context()
+
+    console.print(f"[bold]Generating testing specification...[/bold]")
+    console.print(f"Testing Strategy: {description}")
+
+    command_template = f"""
+    Generate a comprehensive testing specification for a brownfield project.
+
+    Use codebase-retrieval to analyze the existing codebase and understand:
+    1. Current testing framework and patterns
+    2. Existing test coverage and testing strategies
+    3. Current CI/CD testing integration
+    4. Existing mocking and test data patterns
+
+    Testing Description: {description}
+
+    Generate a testing specification that:
+    - Uses existing testing frameworks and patterns
+    - Builds upon current test coverage strategies
+    - Integrates with existing CI/CD testing processes
+    - Follows established mocking and test data patterns
+    - Provides detailed testing implementation guidance
+    - Includes test scenarios and coverage requirements
+
+    Save the testing specification in specs/ directory.
+    """
+
+    success = execute_auggie_command(command_template, f"Testing specification for: {description}")
+
+    if success:
+        console.print("[green]✅ Testing specification generated successfully![/green]")
+        console.print("Check the specs/ directory for your new testing specification.")
+    else:
+        console.print("[red]❌ Failed to generate testing specification[/red]")
+
+
+@app.command(name="operations-spec")
+def operations_spec(
+    description: str = typer.Argument(..., help="Operations description for maintenance specification"),
+):
+    """Generate operations specification for existing project."""
+    require_brownfield_context()
+
+    console.print(f"[bold]Generating operations specification...[/bold]")
+    console.print(f"Operations: {description}")
+
+    command_template = f"""
+    Generate a comprehensive operations specification for a brownfield project.
+
+    Use codebase-retrieval to analyze the existing codebase and understand:
+    1. Current operational procedures and maintenance patterns
+    2. Existing backup and disaster recovery processes
+    3. Current support and incident response procedures
+    4. Existing documentation and runbook patterns
+
+    Operations Description: {description}
+
+    Generate an operations specification that:
+    - Builds upon existing operational procedures
+    - Uses established maintenance and support patterns
+    - Integrates with current backup and recovery processes
+    - Follows existing incident response procedures
+    - Provides detailed operational implementation guidance
+    - Includes runbooks and maintenance procedures
+
+    Save the operations specification in specs/ directory.
+    """
+
+    success = execute_auggie_command(command_template, f"Operations specification for: {description}")
+
+    if success:
+        console.print("[green]✅ Operations specification generated successfully![/green]")
+        console.print("Check the specs/ directory for your new operations specification.")
+    else:
+        console.print("[red]❌ Failed to generate operations specification[/red]")
 
 
 @app.command(name="tasks")
@@ -1342,6 +1711,125 @@ def tasks(
         console.print("Check the specs/ directory for your new development tasks.")
     else:
         console.print("[red]❌ Failed to generate development tasks[/red]")
+
+
+@app.command(name="specify")
+def specify_command(
+    description: str = typer.Argument(..., help="Technical specification description"),
+):
+    """Generate technical specification for existing project."""
+    require_brownfield_context()
+
+    console.print(f"[bold]Generating technical specification...[/bold]")
+    console.print(f"Technical Spec: {description}")
+
+    command_template = f"""
+    Generate a comprehensive technical specification for a brownfield project.
+
+    Use codebase-retrieval to analyze the existing codebase and understand:
+    1. Current technical architecture and patterns
+    2. Existing technology stack and dependencies
+    3. Current code organization and module structure
+    4. Existing integration patterns and APIs
+
+    Technical Description: {description}
+
+    Generate a technical specification that:
+    - Leverages existing technical architecture
+    - Uses established technology patterns
+    - Builds upon current code organization
+    - Integrates with existing systems and APIs
+    - Provides detailed technical implementation guidance
+    - Includes architecture diagrams and technical decisions
+
+    Save the technical specification in specs/ directory.
+    """
+
+    success = execute_auggie_command(command_template, f"Technical specification for: {description}")
+
+    if success:
+        console.print("[green]✅ Technical specification generated successfully![/green]")
+        console.print("Check the specs/ directory for your new technical specification.")
+    else:
+        console.print("[red]❌ Failed to generate technical specification[/red]")
+
+
+@app.command(name="orchestrate")
+def orchestrate(
+    description: str = typer.Argument(..., help="Orchestration context for intelligent planning"),
+):
+    """Generate intelligent specification planning for existing project."""
+    require_brownfield_context()
+
+    console.print(f"[bold]Generating intelligent specification planning...[/bold]")
+    console.print(f"Planning Context: {description}")
+
+    command_template = f"""
+    Generate intelligent specification planning for a brownfield project.
+
+    Use codebase-retrieval to analyze the existing codebase and understand:
+    1. Current project scope and feature set
+    2. Existing technical complexity and constraints
+    3. Current development patterns and practices
+    4. Existing documentation and specification structure
+
+    Planning Context: {description}
+
+    Generate an orchestration plan that:
+    - Analyzes existing project context and requirements
+    - Creates intelligent specification task breakdown
+    - Prioritizes specifications based on existing architecture
+    - Provides parallel execution opportunities
+    - Considers existing development workflow
+    - Includes milestone checkpoints and approval gates
+
+    Save the orchestration plan in specs/ directory as orchestration-plan.md.
+    """
+
+    success = execute_auggie_command(command_template, f"Orchestration planning for: {description}")
+
+    if success:
+        console.print("[green]✅ Orchestration plan generated successfully![/green]")
+        console.print("Check the specs/ directory for your new orchestration plan.")
+    else:
+        console.print("[red]❌ Failed to generate orchestration plan[/red]")
+
+
+@app.command(name="export-specs")
+def export_specs(
+    export_path: str = typer.Argument(..., help="Path to export specifications"),
+):
+    """Export specifications for development handoff."""
+    require_brownfield_context()
+
+    console.print(f"[bold]Exporting specifications...[/bold]")
+    console.print(f"Export Path: {export_path}")
+
+    command_template = f"""
+    Export comprehensive specifications for development handoff from a brownfield project.
+
+    Use codebase-retrieval to analyze the existing codebase and create a complete export package.
+
+    Export Path: {export_path}
+
+    Create an export package that includes:
+    - All generated specifications from specs/ directory
+    - Project context materials from .augment/context/
+    - Project constitution and guidelines from memory/
+    - Existing codebase analysis and architecture documentation
+    - Development workspace setup instructions
+    - Integration guidance for existing codebase
+
+    Export the complete package to the specified path with proper organization.
+    """
+
+    success = execute_auggie_command(command_template, f"Export specifications to: {export_path}")
+
+    if success:
+        console.print("[green]✅ Specifications exported successfully![/green]")
+        console.print(f"Check {export_path} for your exported development package.")
+    else:
+        console.print("[red]❌ Failed to export specifications[/red]")
 
 
 @app.command(name="status")
