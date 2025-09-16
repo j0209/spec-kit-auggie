@@ -55,6 +55,26 @@ specify --help
 specify check
 ```
 
+## 🚀 **Choose Your Workflow**
+
+### **🌱 New Projects? Use Greenfield Workflow**
+Perfect for starting fresh with complete project orchestration:
+```bash
+specify init my-workspace
+cd my-workspace && source templates/auggie-commands.sh
+auggie-new-project "my-app" "Description" --tech-stack=react
+```
+**Features**: Multi-project management, parallel AUGGIE orchestration, complete workflow automation
+
+### **🏗️ Existing Projects? Use Brownfield Workflow**
+Perfect for adding features to existing codebases:
+```bash
+cd /path/to/existing-project
+specify init --brownfield
+specify scope-spec "Add user authentication" --complexity=enterprise
+```
+**Features**: Codebase analysis, pattern-aware specifications, lightweight integration
+
 ## 🌱 **Greenfield Development (Multi-Project Workspace)**
 
 ### **Setup Multi-Project Workspace**
@@ -248,26 +268,54 @@ spec-kit-auggie/
 | `auggie-scope-spec` | Pragmatic scope control | `auggie-scope-spec "task-manager" "User auth" --complexity=simple` |
 | `auggie-design-spec` | Visual design system | `auggie-design-spec "task-manager" "Modern SaaS dashboard"` |
 | `auggie-ux-spec` | User experience flows | `auggie-ux-spec "task-manager" "User onboarding flow"` |
+| `auggie-component-design` | Component specifications | `auggie-component-design "task-manager" "Data table with filters"` |
 | `auggie-security-spec` | Security specifications | `auggie-security-spec "task-manager" "User data protection"` |
 | `auggie-database-spec` | Database specifications | `auggie-database-spec "task-manager" "User and task data model"` |
+| `auggie-api-spec` | API & integration specs | `auggie-api-spec "task-manager" "REST API with rate limiting"` |
 | `auggie-infrastructure-spec` | Infrastructure & deployment | `auggie-infrastructure-spec "task-manager" "Kubernetes deployment"` |
+| `auggie-monitoring-spec` | Monitoring & observability | `auggie-monitoring-spec "task-manager" "Performance tracking"` |
+| `auggie-testing-spec` | Testing strategy | `auggie-testing-spec "task-manager" "Load testing strategy"` |
+| `auggie-operations-spec` | Operations & maintenance | `auggie-operations-spec "task-manager" "24/7 support procedures"` |
+
+#### **Implementation Planning**
+| Command | Purpose | Example |
+|---------|---------|---------|
+| `auggie-specify` | Technical specifications | `auggie-specify "task-manager" "JWT authentication system"` |
+| `auggie-plan` | Implementation plans | `auggie-plan "task-manager" "Express + PostgreSQL + bcrypt"` |
+| `auggie-tasks` | Development task breakdown | `auggie-tasks "task-manager" "Focus on backend API first"` |
+
+#### **Workflow Management**
+| Command | Purpose | Example |
+|---------|---------|---------|
+| `auggie-orchestrate` | Intelligent planning | `auggie-orchestrate "task-manager" "Focus on compliance"` |
+| `auggie-review-milestone` | Review checkpoints | `auggie-review-milestone "task-manager" "definition"` |
+| `auggie-approve-milestone` | Approve milestones | `auggie-approve-milestone "task-manager" "technical"` |
+| `auggie-export-specs` | Export development workspace | `auggie-export-specs "task-manager" "/path/to/dev/"` |
 
 ### **🏗️ Brownfield Commands (System-Wide CLI)**
-*Use these commands from any existing project directory*
+*Use these commands from any existing project directory - automatically analyzes existing codebase*
 
 #### **Initialization & Status**
 | Command | Purpose | Example |
 |---------|---------|---------|
 | `specify init --brownfield` | Add Spec-Kit to existing project | `specify init --brownfield` |
 | `specify status` | Check integration status | `specify status` |
+| `specify check` | Verify AUGGIE CLI availability | `specify check` |
 
-#### **Context-Aware Specifications**
+#### **Context-Aware Specifications** (Analyzes existing codebase patterns)
 | Command | Purpose | Example |
 |---------|---------|---------|
 | `specify scope-spec` | Generate scope specification | `specify scope-spec "Add user auth" --complexity=enterprise` |
 | `specify design-spec` | Create design specification | `specify design-spec "Modern login interface"` |
 | `specify plan` | Generate implementation plan | `specify plan "JWT with existing backend"` |
 | `specify tasks` | Create development tasks | `specify tasks "Focus on security best practices"` |
+
+#### **Key Brownfield Features**
+- **🔍 Codebase Analysis**: Uses `codebase-retrieval` to understand existing architecture
+- **🎯 Pattern Matching**: Generates specs that fit existing coding patterns
+- **⚡ Technology Aware**: Respects current tech stack and constraints
+- **📁 Lightweight**: Creates minimal `.augment/`, `specs/`, `memory/` directories
+- **🔄 Context Materials**: Supports adding business docs to `.augment/context/`
 
 #### **Key Differences**
 - **🌱 Greenfield**: Multi-project workspace with `auggie-*` commands requiring project names
