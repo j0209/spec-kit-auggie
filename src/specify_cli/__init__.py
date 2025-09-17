@@ -1137,7 +1137,7 @@ def require_brownfield_context():
 
 
 def execute_auggie_command(command_template: str, context: str = ""):
-    """Execute AUGGIE command with proper context."""
+    """Execute AUGGIE command with proper codebase context."""
     cwd = Path.cwd()
 
     # Ensure AUGGIE is available
@@ -1146,8 +1146,10 @@ def execute_auggie_command(command_template: str, context: str = ""):
         console.print("[yellow]Install with:[/yellow] npm install -g @augmentcode/auggie")
         raise typer.Exit(1)
 
-    # Execute AUGGIE with context
+    # Execute AUGGIE with explicit codebase context
     full_command = f"""
+    CRITICAL: Use codebase-retrieval to analyze the existing codebase before generating any specifications.
+
     {command_template}
 
     PROJECT CONTEXT:
@@ -1159,10 +1161,17 @@ def execute_auggie_command(command_template: str, context: str = ""):
 
     Additional Context: {context}
 
-    IMPORTANT: This is a brownfield project integration. Use codebase-retrieval to understand existing architecture and generate specifications that fit the existing codebase.
+    BROWNFIELD INTEGRATION REQUIREMENTS:
+    1. MUST use codebase-retrieval to understand existing architecture
+    2. MUST analyze existing patterns and conventions
+    3. MUST generate specifications that fit the existing codebase
+    4. MUST respect current technology stack and constraints
+    5. MUST reference existing files and implementation patterns
+
+    Start by using codebase-retrieval to understand the existing project structure and patterns.
     """
 
-    # Run AUGGIE command
+    # Run AUGGIE command from project directory to ensure proper context
     try:
         result = subprocess.run(
             ["auggie", "--quiet", "--print", full_command],
@@ -1191,21 +1200,25 @@ def scope_spec(
     command_template = f"""
     Generate a comprehensive scope specification for a brownfield project.
 
-    Use codebase-retrieval to analyze the existing codebase and understand:
+    STEP 1: Use codebase-retrieval to analyze the existing codebase and understand:
     1. Current architecture and technology stack
     2. Existing patterns and conventions
     3. Current feature set and functionality
     4. Technical constraints and limitations
+    5. Existing file structure and organization
+    6. Current dependencies and integrations
 
+    STEP 2: Generate scope specification based on codebase analysis:
     Feature Description: {description}
     Complexity Level: {complexity}
 
     Generate a scope specification that:
-    - Fits within the existing architecture
-    - Respects current technical constraints
-    - Builds upon existing functionality
-    - Follows established patterns
+    - Fits within the existing architecture (reference specific files/patterns found)
+    - Respects current technical constraints (mention specific technologies found)
+    - Builds upon existing functionality (reference existing features found)
+    - Follows established patterns (cite specific code patterns found)
     - Marks any ambiguities with [NEEDS CLARIFICATION]
+    - References specific existing files and components where relevant
 
     Save the specification in specs/ directory with proper feature numbering.
     """
